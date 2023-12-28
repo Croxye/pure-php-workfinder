@@ -1,4 +1,5 @@
 <?php
-echo '<h1>Listings Page</h1>';
+
+loadView('listings/index');
 
 ?>
