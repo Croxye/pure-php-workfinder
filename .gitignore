@@ -1,1 +1,6 @@
 pro
+/vendor
+/node_modules
+.env
+.vscoce
+.DS_STORE
