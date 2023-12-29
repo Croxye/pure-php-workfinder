@@ -4,12 +4,14 @@ class Router
 {
   protected $routes = [];
 
+
   /**
    * Registers a route with the given method, URI, and controller.
    *
-   * @param mixed $method The HTTP method for the route.
+   * @param string $method The HTTP method for the route.
    * @param string $uri The URI pattern for the route.
-   * @param mixed $controller The controller for the route.
+   * @param string $controller The controller for the route.
+   * @return void
    */
   public function registerRoute($method, $uri, $controller)
   {
@@ -86,7 +88,7 @@ class Router
   {
     foreach ($this->routes as $route) {
       if ($route['uri'] === $uri && $route['method'] === $method) {
-        require base_path($route['controller']);
+        require basePath($route['controller']);
         return;
       }
     }

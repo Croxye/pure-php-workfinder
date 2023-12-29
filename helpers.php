@@ -6,7 +6,7 @@
  * @param string $path
  * @return string
  */
-function base_path($path = '')
+function basePath($path = '')
 {
   return __DIR__ . DIRECTORY_SEPARATOR . $path;
 }
@@ -18,7 +18,7 @@ function base_path($path = '')
  */
 function loadView($name)
 {
-  $viewPath = base_path("views/{$name}.view.php");
+  $viewPath = basePath("views/{$name}.view.php");
 
   if (file_exists($viewPath)) {
     require $viewPath;
@@ -34,7 +34,7 @@ function loadView($name)
  */
 function loadPartial($name)
 {
-  $partialPath = base_path("views/partials/{$name}.php");
+  $partialPath = basePath("views/partials/{$name}.php");
 
   if (file_exists($partialPath)) {
     require $partialPath;
