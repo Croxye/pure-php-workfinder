@@ -1,0 +1,16 @@
+{
+  "name": "necipakgz/workfinder",
+  "description": "Job listing application",
+  "authors": [
+    {
+      "name": "NecipAkgz",
+      "email": "necip.akgz@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
