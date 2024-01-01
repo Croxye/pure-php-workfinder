@@ -12,15 +12,18 @@ class Router
    *
    * @param string $method The HTTP method for the route.
    * @param string $uri The URI pattern for the route.
-   * @param string $controller The controller for the route.
+   * @param string $action The controller for the route.
    * @return void
    */
-  public function registerRoute($method, $uri, $controller)
+  public function registerRoute($method, $uri, $action)
   {
+    list($controller, $controllerMethod) = explode('@', $action);
+
     $this->routes[] = [
-      'method'     => $method,
-      'uri'        => $uri,
-      'controller' => $controller
+      'method'           => $method,
+      'uri'              => $uri,
+      'controller'       => $controller,
+      'controllerMethod' => $controllerMethod
     ];
   }
 
@@ -90,7 +93,13 @@ class Router
   {
     foreach ($this->routes as $route) {
       if ($route['uri'] === $uri && $route['method'] === $method) {
-        require basePath("App/" . $route['controller']);
+        // Extract controller and method
+        $controller       = 'App\\Controllers\\' . $route['controller'];
+        $controllerMethod = $route['controllerMethod'];
+
+        // Instantiate controller and call method
+        $controllerInstans = new $controller();
+        $controllerInstans->$controllerMethod();
         return;
       }
     }
